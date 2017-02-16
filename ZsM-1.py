@@ -1,4 +1,5 @@
 # implementation of an algorithm to solve project euler problem 1
+# https://projecteuler.net/
 
 # initialise a list to store all the multiples
 multiples = []
