@@ -16,4 +16,4 @@ def largestPrimeFactor(num):
                 p = p + 2
     return p
 
-print largestPrimeFactor(600851475143)
+print (largestPrimeFactor(600851475143))

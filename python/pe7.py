@@ -1,5 +1,5 @@
 from math import *
-from time import clock
+from time import time
 
 def isPrime(n):
     if  n < 2:
@@ -24,7 +24,9 @@ def nthPrimeTrialDiv(n):
     return p
 
 def primesSieve(limit):
-    primes = range(limit)
+    primes = []
+    for i in range(limit):
+        primes.append(i)
     primes[1] = 0
     p = 2
     while p + 2 < limit:
@@ -54,13 +56,13 @@ def nthPrime(n):
             return primes[i]
 
 
-start = clock()
-print nthPrimeTrialDiv(10001)
-end = clock()
-print "Trial Division method - time taken:", (end - start), "seconds"
+start = time()
+print (nthPrimeTrialDiv(10001))
+end = time()
+print ("Trial Division method - time taken:", (end - start), "seconds")
 
 
-start = clock()
-print nthPrime(10001)
-end = clock()
-print "Sieve of Eratosthenes method - time taken:", (end - start), "seconds"
+start = time()
+print (nthPrime(10001))
+end = time()
+print ("Sieve of Eratosthenes method - time taken:", (end - start), "seconds")
