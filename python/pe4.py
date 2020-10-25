@@ -2,7 +2,7 @@ def reverse(n):
     revn = 0
     while n > 0:
         revn = revn*10 + n%10
-        n = n / 10
+        n = int (n / 10)
     return revn
 
 def palindromic(n):
@@ -24,7 +24,7 @@ def largestPalindromicProduct(digits, printcalc=""):
         y = y - 1
         x = 10**digits - 1
     if printcalc == "y":
-        print palx, "*", paly, "=", pal
+        print (palx, "*", paly, "=", pal)
     return pal
 
 largestPalindromicProduct(3, printcalc="y")
