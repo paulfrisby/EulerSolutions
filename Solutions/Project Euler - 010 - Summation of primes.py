@@ -46,7 +46,7 @@ and a much more naive approach. To solve the exact given problem the efficient
 approach is roughly 7 times faster (~0.5s vs ~3.5s).
 
 Here I include the time it took to run for various limits to give a better idea
-of efficiency difference. (time given to 2 significant figures opf precision)
+of efficiency difference. (time given to 2 significant figures of precision)
 
    Limit            Answer         Sieve of Eratosthenes  Trial Division
 -----------  --------------------  ---------------------  --------------
