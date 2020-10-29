@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Project Euler - Problem 009 - Special Pythagorean Triple
+# Project Euler - Problem 009 - Special Pythagorean triplet
 # ------------------------------------------------------------------------------
 # Problem Link: https://projecteuler.net/problem=009
 # ------------------------------------------------------------------------------
