@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Project Euler - Problem 004 - Template File
+# Project Euler - Problem 004 - Largest palindrome product
 # ------------------------------------------------------------------------------
 # Problem Link: https://projecteuler.net/problem=004
 # ------------------------------------------------------------------------------
@@ -13,7 +13,9 @@
 # Problem Definition
 # ------------------------------------------------------------------------------
 """
-A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+A palindromic number reads the same both ways. The largest palindrome made from
+the product of two 2-digit numbers is 9009 = 91 × 99.
+
 Find the largest palindrome made from the product of two 3-digit numbers.
 """
 # ------------------------------------------------------------------------------
