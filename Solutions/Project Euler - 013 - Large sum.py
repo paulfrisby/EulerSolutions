@@ -154,7 +154,7 @@ def addLongNumbers(numberList):
         digitTotal = carry
 
         # work out total of least significant digits added together
-        for number in numList:
+        for number in numberList:
             digitTotal += int(str(number)[digit])
 
         # add least significant digit to answer
