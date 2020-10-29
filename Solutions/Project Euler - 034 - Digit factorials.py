@@ -1,9 +1,31 @@
-# https://projecteuler.net/problem=34
-#
-# 145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
-# Find the sum of all numbers which are equal to the sum of the factorial of their digits.
-# Note: As 1! = 1 and 2! = 2 are not sums they are not included.
+# ------------------------------------------------------------------------------
+# Project Euler - Problem 034 - Digit factorials
+# ------------------------------------------------------------------------------
+# Problem Link: https://projecteuler.net/problem=034
+# ------------------------------------------------------------------------------
+# Author: Paul Frisby
+# Email: mail@paulfrisby.com
+# Github: https://github.com/paulfrisby/
+# ------------------------------------------------------------------------------
 
+
+# ------------------------------------------------------------------------------
+# Problem Definition
+# ------------------------------------------------------------------------------
+"""
+145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
+
+Find the sum of all numbers which are equal to the sum of the factorial of their
+digits.
+
+Note: As 1! = 1 and 2! = 2 are not sums they are not included.
+"""
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Main Code
+# ------------------------------------------------------------------------------
 
 # returns n!
 def factorial(n):
@@ -45,4 +67,4 @@ for i in range(10,2000000):
         runningSum += i
         print(i) # printing out individual results, although not strictly required
 
-print (runningSum)
+print (f'Total = {runningSum}')

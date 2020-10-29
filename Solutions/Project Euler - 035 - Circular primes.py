@@ -1,19 +1,48 @@
-# https://projecteuler.net/problem=35
-#
-# The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime.
-# There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.
-# How many circular primes are there below one million?
+# ------------------------------------------------------------------------------
+# Project Euler - Problem 035 - Circular primes
+# ------------------------------------------------------------------------------
+# Problem Link: https://projecteuler.net/problem=035
+# ------------------------------------------------------------------------------
+# Author: Paul Frisby
+# Email: mail@paulfrisby.com
+# Github: https://github.com/paulfrisby/
+# ------------------------------------------------------------------------------
 
-# PSEUDOCODE / PLAN
-# generate array of primes below 1,000,000 using sieve of Eratosthenes
-#
-# for each prime in array of primes:
-#   check if its rotations are also present
-#       if not, remove it and any present rotations from array
-#
-# remove zeroed out entries from array
-# check size of array after purge of non circular primes for result
 
+# ------------------------------------------------------------------------------
+# Problem Definition
+# ------------------------------------------------------------------------------
+"""
+The number, 197, is called a circular prime because all rotations of the digits:
+197, 971, and 719, are themselves prime.
+
+There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71,
+73, 79, and 97.
+
+How many circular primes are there below one million?
+"""
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Pseudocode
+# ------------------------------------------------------------------------------
+"""
+generate array of primes below 1,000,000 using sieve of Eratosthenes
+
+for each prime in array of primes:
+    check if its rotations are also present
+        if not, remove it and any present rotations from array
+
+remove zeroed out entries from array
+check size of array after purge of non circular primes for result
+"""
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Main Code
+# ------------------------------------------------------------------------------
 
 # returns a list where if n is a prime, list[n] = n, otherwise list[n] = 0
 # uses sieve of Eratosthenes method to generate efficiently
@@ -134,4 +163,5 @@ def nonZero(n):
         return True
     
 # filters out all 0s from sieved list of circular primes so we can see exactly how many there are
-print(len(list(filter(nonZero, circPrimeSieve(1000000)))))
+print(f'In total, there are {len(list(filter(nonZero, circPrimeSieve(1000000))))} circular primes below one million, they are:')
+print(list(filter(nonZero, circPrimeSieve(1000000))))

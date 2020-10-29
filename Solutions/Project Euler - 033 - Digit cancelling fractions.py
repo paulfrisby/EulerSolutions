@@ -1,32 +1,59 @@
-# https://projecteuler.net/problem=33
-#
-# The fraction 49/98 is a curious fraction, as an inexperienced mathematician in attempting to simplify it
-# may incorrectly believe that 49/98 = 4/8,
-# which is correct, is obtained by cancelling the 9s.
-# We shall consider fractions like, 30/50 = 3/5, to be trivial examples.
-# There are exactly four non-trivial examples of this type of fraction, less than one in value,
-# and containing two digits in the numerator and denominator.
-# If the product of these four fractions is given in its lowest common terms, find the value of the denominator.
+# ------------------------------------------------------------------------------
+# Project Euler - Problem 033 - Digit cancelling fractions
+# ------------------------------------------------------------------------------
+# Problem Link: https://projecteuler.net/problem=033
+# ------------------------------------------------------------------------------
+# Author: Paul Frisby
+# Email: mail@paulfrisby.com
+# Github: https://github.com/paulfrisby/
+# ------------------------------------------------------------------------------
 
 
-# PSEUDOCODE:
-# isFalseSimplificationEqual(numerator, denominator)
-#   return 1 if equal
-#   return 0 if not equal
-#   return -1 if not able to be simplified in this specific false way
+# ------------------------------------------------------------------------------
+# Problem Definition
+# ------------------------------------------------------------------------------
+"""
+The fraction 49/98 is a curious fraction, as an inexperienced mathematician in
+attempting to simplify it may incorrectly believe that 49/98 = 4/8, which is
+correct, is obtained by cancelling the 9s.
 
-# set up empty array of answers
+We shall consider fractions like, 30/50 = 3/5, to be trivial examples.
 
-# for every numerator from 11 to 99:
-#   for every denominator from (numerator+1) to 99:
-#       if isFalseSimplificationEqual(numerator, denominator) returns 1:
-#           add numerator / denominator to array of answers
+There are exactly four non-trivial examples of this type of fraction, less than
+one in value, and containing two digits in the numerator and denominator.
 
-# multiply together all the fractions in answer array
-# simplify result
-# get denominator, this is the final result
+If the product of these four fractions is given in its lowest common terms,
+find the value of the denominator.
+"""
+# ------------------------------------------------------------------------------
 
 
+# ------------------------------------------------------------------------------
+# Pseudocode
+# ------------------------------------------------------------------------------
+"""
+isFalseSimplificationEqual(numerator, denominator)
+    return 1 if equal
+    return 0 if not equal
+    return -1 if not able to be simplified in this specific false way
+
+    set up empty array of answers
+
+for every numerator from 11 to 99:
+    for every denominator from (numerator+1) to 99:
+        if isFalseSimplificationEqual(numerator, denominator) returns 1:
+            add numerator / denominator to array of answers
+
+multiply together all the fractions in answer array
+simplify result
+get denominator, this is the final result
+"""
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Main Code
+# ------------------------------------------------------------------------------
 
 # function which checks whether a positive fraction can be crudely simplified (returns -1 if not or for trivial examples)
 # if it can it checks if crude simplification is equal to actual simplification
@@ -86,6 +113,12 @@ for i in range(len(numerators)):
     # works out a running product of numerator and denominator of crude simplification
     numeratorProduct = numeratorProduct * int(numerators[i]/10)
     denominatorProduct = denominatorProduct * (denominators[i]%10)
+
+
+# simplifies if fraction can be cancelled down to 1/n
+if denominatorProduct % numeratorProduct == 0:
+   denominatorProduct = int (denominatorProduct /  numeratorProduct)
+   numeratorProduct = 1
 
     
 # prints product of crudely simplified fractions

@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Project Euler - Problem 036 - Template File
+# Project Euler - Problem 036 - Double-base palindromes
 # ------------------------------------------------------------------------------
 # Problem Link: https://projecteuler.net/problem=036
 # ------------------------------------------------------------------------------
@@ -15,9 +15,11 @@
 """
 The decimal number, 585 = 1001001001(binary), is palindromic in both bases.
 
-Find the sum of all numbers, less than one million, which are palindromic in base 10 and base 2.
+Find the sum of all numbers, less than one million, which are palindromic in
+base 10 and base 2.
 
-(Please note that the palindromic number, in either base, may not include leading zeros.)
+(Please note that the palindromic number, in either base, may not include
+leading zeros.)
 """
 # ------------------------------------------------------------------------------
 
