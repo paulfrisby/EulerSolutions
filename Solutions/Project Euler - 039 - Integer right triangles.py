@@ -85,15 +85,15 @@ limits. Times given to 2 significant figures of accuracy.
 -------  ---------------------------  -----------------  ------------------
     100            60  /   2                    0.035 s            0.0020 s                       
     250           240  /   4                    0.37  s            0.0030 s
-  1,000           840  /   8                   24     s            0.062  s
-  2,500         1,680  /  10                  390     s            0.40   s
- 10,000         9,240  /  20                 N/A                   6.0    s
- 25,000        18,480  /  25                 N/A                  37      s
+  1,000           840  /   8                   24     s            0.047  s
+  2,500         1,680  /  10                  390     s            0.31   s
+ 10,000         9,240  /  20                 N/A                   4.9    s
+ 25,000        18,480  /  25                 N/A                  31      s
 -------  ---------------------------  -----------------  ------------------
 
 While the compute time for the optimised solution still grows quite quickly as
 the limit grows, it is a lot faster at every tested limit compared to original
-solution. For the limit of 1,000, the optimised solution is ~400 times faster.
+solution. For the limit of 1,000, the optimised solution is ~500 times faster.
 """
 # ------------------------------------------------------------------------------
 
@@ -168,7 +168,12 @@ def optimisedMaxPythagoreanTriplets(limit):
     # this is largest possible ratio of a+b : c
     # once we exceed this ratio we can break out of loop
     while a <= limit / (2 + sqrt(2)):
-        b = a 
+        
+        # initialising b here since we only need to generate triplets with
+        # perimeter in upper half of limit
+        # initialising to a instead if that is larger, as b >= a always
+        b = max(int(limit/4) - a, a)
+        
         while a + b <= 2*limit / (2 + sqrt(2)):
 
             # using Pythagorean to work out c 
@@ -215,3 +220,4 @@ def timeCompare(limit):
 
 
 timeCompare(1000)
+timeCompare(10000)
