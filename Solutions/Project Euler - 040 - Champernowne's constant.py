@@ -179,7 +179,7 @@ def champernownesProductOfPositions(positions):
     return totalProduct
 
 
-# runs a set of inputs on all 3 implementations and prints results / time took
+# runs a set of inputs on both implementations and prints results / time took
 def timeCompare(argumentList):
     for argument in argumentList:
 
