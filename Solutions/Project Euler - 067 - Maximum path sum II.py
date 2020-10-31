@@ -25,7 +25,7 @@ the row below, the maximum total from top to bottom is 23.
 
 That is, 3 + 7 + 4 + 9 = 23.
 
-Find the maximum total from top to bottom in triangle.txt a 15K text file
+Find the maximum total from top to bottom in p067_triangle.txt, a 15K text file
 containing a triangle with one-hundred rows.
 
 NOTE: This is a much more difficult version of Problem 18. It is not possible
@@ -103,5 +103,5 @@ for i in range(1, 101):
 
     triangle.append(row)
 
-
+triangleFile.close()
 print (maxPathSum(triangle))
