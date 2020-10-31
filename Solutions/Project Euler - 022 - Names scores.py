@@ -1,3 +1,55 @@
+# ------------------------------------------------------------------------------
+# Project Euler - Problem 022 - Names scores
+# ------------------------------------------------------------------------------
+# Problem Link: https://projecteuler.net/problem=022
+# ------------------------------------------------------------------------------
+# Author: Paul Frisby
+# Email: mail@paulfrisby.com
+# Github: https://github.com/paulfrisby/
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Problem Definition
+# ------------------------------------------------------------------------------
+"""
+Using p022_names.txt, a 46K text file containing over five-thousand first names,
+begin by sorting it into alphabetical order. Then working out the alphabetical
+value for each name, multiply this value by its alphabetical position in the
+list to obtain a name score.
+
+For example, when the list is sorted into alphabetical order, COLIN, which is
+worth 3 + 15 + 12 + 9 + 14 = 53, is the 938th name in the list. So, COLIN would
+obtain a score of 938 × 53 = 49714.
+
+What is the total of all the name scores in the file?
+"""
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Pseudocode
+# ------------------------------------------------------------------------------
+"""
+general outline / plan of approach to problem
+explanation of insights in to problem may also be included here as necessary
+"""
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Extra Information
+# ------------------------------------------------------------------------------
+"""
+optional section depending on problem
+"""
+# ------------------------------------------------------------------------------
+
+
+# ------------------------------------------------------------------------------
+# Main Code
+# ------------------------------------------------------------------------------
+
 names = ["MARY",
 "PATRICIA",
 "LINDA",
@@ -5175,4 +5227,4 @@ names.sort()
 total = 0
 for i in range(len(names)):
     total += (i + 1) * nameVal(names[i])
-print total
+print (total)
