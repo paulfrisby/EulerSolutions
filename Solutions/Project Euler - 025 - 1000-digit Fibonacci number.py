@@ -41,43 +41,33 @@ digits?
 
 
 # ------------------------------------------------------------------------------
-# Pseudocode
-# ------------------------------------------------------------------------------
-"""
-general outline / plan of approach to problem
-explanation of insights in to problem may also be included here as necessary
-"""
-# ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
-# Extra Information
-# ------------------------------------------------------------------------------
-"""
-optional section depending on problem
-"""
-# ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
 # Main Code
 # ------------------------------------------------------------------------------
 
-def digits(n):
-    return len(str(n))
-
-# returns n, where nth term of fibonacci sequence being first to have d digits 
-def fibDigits(d):
-    f1 = 1
-    f2 = 1
-    n = 1
+# returns n, where nth term of fibonacci sequence is first to have d digits 
+def fibonacciDigits(d):
+    fib1 = 1
+    fib2 = 1
+    term = 1
     while True:
-        if digits(f1) == d:
-            return n
-        if digits(f2) == d:
-            return n + 1
-        f1 = f1 + f2
-        f2 = f1 + f2
-        n += 2
 
-print (fibDigits(1000))
+        # checks to see if either of newly generated terms are long enough
+        if len(str(fib1)) == d:
+            return term
+        if len(str(fib2)) == d:
+            return term + 1
+
+        # generate next 2 terms of sequence
+        # fib1 = fib(n), f2 = fib(n+1)
+
+        # fib(n) + fib(n+1) = fib(n+2)
+        fib1 = fib1 + fib2
+
+        # fib(n+1) + fib(n+2) = fib(n+3)
+        fib2 = fib2 + fib1
+
+        # since we are computing 2 new terms of sequence per loop
+        term += 2
+
+
+print (f'The index of the 1st term in the Fibonacci sequence to contain 1,000 digits is {fibonacciDigits(1000)}')
