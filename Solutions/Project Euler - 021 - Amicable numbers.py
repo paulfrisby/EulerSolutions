@@ -27,20 +27,15 @@ Evaluate the sum of all the amicable numbers under 10000.
 
 
 # ------------------------------------------------------------------------------
-# Pseudocode
+# Optimisation
 # ------------------------------------------------------------------------------
 """
-general outline / plan of approach to problem
-explanation of insights in to problem may also be included here as necessary
-"""
-# ------------------------------------------------------------------------------
+Originally this was taking quite a while to compute. This was because
+sumOfDivisors() was iterating through every possible divisor up to half of n.
 
-
-# ------------------------------------------------------------------------------
-# Extra Information
-# ------------------------------------------------------------------------------
-"""
-optional section depending on problem
+Only checking divisors up to square root of n, and adding the divisor and its
+inverse in 1 step, is considerably faster. We need to be careful to not double
+count a divisor which is the exact square root of n, however.
 """
 # ------------------------------------------------------------------------------
 
@@ -49,24 +44,40 @@ optional section depending on problem
 # Main Code
 # ------------------------------------------------------------------------------
 
+# returns sum of all proper divisors of n
 def sumOfDivisors(n):
+
+    # 1 is not a proper divisor of 1
     if n < 2:
         return 0
+    
+    # 1 is a proper divisor of every other natural number
     total = 1
+    
     divisor = 2
-    while divisor**2 - 1 < n:
+
+    # find each divisor up to square root of n, add it and its inverse to total
+    while divisor**2 <= n:
         if n % divisor == 0:
             total += divisor
-            if n / divisor != divisor:
-                total += n / divisor
+            total += n / divisor
+
+            # remove duplicate if divisor is square root of n
+            if divisor**2 == n:
+                total -= n / divisor
+                
         divisor += 1
+        
     return total
 
-def sumAmicable(lim):
-    total = 0
+
+# returns list of amicable numbers up to limit
+def amicableNumbers(lim):
+    numbers = []
     for i in range(lim):
         if sumOfDivisors(sumOfDivisors(i)) == i and i != sumOfDivisors(i):
-            total += i
-    return total
+            numbers.append(i)
+    return numbers
 
-print (sumAmicable(10000))
+
+print (f'The sum of all amicable numbers under 10,000 is {sum(amicableNumbers(10000))}')
