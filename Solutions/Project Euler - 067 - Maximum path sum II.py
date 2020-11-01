@@ -69,6 +69,9 @@ Example:
 # Main Code
 # ------------------------------------------------------------------------------
 
+import os
+
+
 # returns maximum sum from top to bottom of trianglar matrix
 def maxPathSum(matrix):
     rows = len(matrix)
@@ -84,6 +87,9 @@ def maxPathSum(matrix):
                 matrix[i][j] += matrix [i+1][j + 1]
     return matrix[0][0]
 
+
+# move directory so file from different folder can be imported
+os.chdir("..\ProblemData")
 
 # building triangle matrix from text file
 triangleFile = open('p067_triangle.txt')
@@ -104,4 +110,4 @@ for i in range(1, 101):
     triangle.append(row)
 
 triangleFile.close()
-print (maxPathSum(triangle))
+print (f'The maximum total from top to bottom of triangle in "p067_triangle.txt" is {maxPathSum(triangle)}')

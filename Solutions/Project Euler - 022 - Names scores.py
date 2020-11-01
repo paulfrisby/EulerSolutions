@@ -31,6 +31,9 @@ What is the total of all the name scores in the file?
 # Main Code
 # ------------------------------------------------------------------------------
 
+import os
+
+
 # returns position in alphabet of upper case letter
 def letterVal(char):
     return ord(char) - 64
@@ -43,6 +46,9 @@ def nameVal(name):
         val += letterVal(letter)
     return val
 
+
+# move directory so file from different folder can be imported
+os.chdir("..\ProblemData")
 
 # open file and process names in to a list of strings
 namesFile = open('p022_names.txt')

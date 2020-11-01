@@ -79,6 +79,11 @@ We can use the commas to split each word
 # Main Code
 # ------------------------------------------------------------------------------
 
+import os
+
+# move directory so file from different folder can be imported
+os.chdir("..\ProblemData")
+
 wordsFile = open('p042_words.txt')
 words = wordsFile.read()
 wordsFile.close()
