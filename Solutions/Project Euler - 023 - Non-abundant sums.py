@@ -35,62 +35,63 @@ two abundant numbers.
 
 
 # ------------------------------------------------------------------------------
-# Pseudocode
-# ------------------------------------------------------------------------------
-"""
-general outline / plan of approach to problem
-explanation of insights in to problem may also be included here as necessary
-"""
-# ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
-# Extra Information
-# ------------------------------------------------------------------------------
-"""
-optional section depending on problem
-"""
-# ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
 # Main Code
 # ------------------------------------------------------------------------------
 
 #returns list of proper divisors
 def divisors(n):
+
+    # 1 has no proper divisor
     if n < 2:
         return []
-    div = [1]
+
+    # 1 is a proper divisor of every number larger than 1
+    divisors = [1]
+    
     divisor = 2
-    while divisor**2 - 1 < n:
+    while divisor**2 <= n:
         if n % divisor == 0:
-            div += [divisor]
-            if n / divisor != divisor:
-                div += [n/divisor]
+            divisors.append(divisor)
+
+            # if divisor is not square root of n, adds invers divisor too
+            if n/divisor != divisor:
+                divisors.append(n/divisor)
+                
         divisor += 1
-    return div
+    return divisors
+
 
 # returns true if number is abundant
 def abundant(n):
     return sum(divisors(n)) > n
 
+
 # returns list of abundant numbers up to a given limit
 def abundantList(lim):
-    alist = []
+    abundantList = []
     for n in range(lim):
         if abundant(n):
-            alist += [n]
-    return alist
+            abundantList.append(n)
+    return abundantList
 
+
+# create a list of numbers up to 28,124
 check = []
 for i in range(28124):
     check.append(i)
     
+# creat list of abundant numbers under 28124
 abun = abundantList(28124)
-x = len(abun)
-for i in range(x):
-    for j in range(i - 1, x):
+
+aLen = len(abun)
+
+# iterate through each possible combination of 2 abundant numbers
+for i in range(aLen):
+    for j in range(i, aLen):
         if abun[i] + abun[j] < 28124:
+
+            # update checklist to 0 to show that number can be written in required form
             check[abun[i] + abun[j]] = 0
-print (sum(check))
+
+# sum remaining numbers to get total of all numbers that can't be written as sum of 2 abundant numbers
+print (f'The sum of all the positive integers which cannot be written as the sum of two abundant numbers is {sum(check)}')
