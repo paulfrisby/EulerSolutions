@@ -36,87 +36,78 @@ its decimal fraction part.
 
 
 # ------------------------------------------------------------------------------
-# Pseudocode
-# ------------------------------------------------------------------------------
-"""
-general outline / plan of approach to problem
-explanation of insights in to problem may also be included here as necessary
-"""
-# ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
-# Extra Information
-# ------------------------------------------------------------------------------
-"""
-optional section depending on problem
-"""
-# ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
 # Main Code
 # ------------------------------------------------------------------------------
 
-def digits(n):
-    return len(str(n))
-
-
-def decExpansion(n):
-    div = 10 ** digits(n - 1)
-    dec = []
-    for j in range(digits(n - 1) - 1):
-        dec += [[0, 10**(j+1)]]
-    if div % n == 0:
-        dec.append([int(div/n), 0])
-        return dec
-    dec += [[int(div/n), div % n]]
+# returns a list of tuples with decimal digit / remainder for each digit of
+# decimal expansion of 1/n
+def decimalExpansion(divisor):
+    remainder = 1
+    decimal = []
     while True:
-        dec += [[int(dec[-1][1] * 10 / n), dec[-1][1] * 10 % n]]
-        if dec[-1][1] == 0 and len(dec) > 1:
-            return dec
-        for i in range(len(dec) - 1):
-            if dec[i][0] == dec[-1][0] and dec[i][1] == dec[-1][1]:
-                return dec
+        dividend = 10*remainder
+        quotient = int(dividend / divisor)
+        remainder = int(dividend % divisor)
+        decimal.append([quotient, remainder])
+
+        # no remainder means the decimal does not have a repeating cycle
+        # and we have fully computed it
+        if remainder == 0:
+            return decimal
+        
+        # if we have repeat remainder, we are now in the 1st digit of 2nd cycle 
+        if decimal[-1] in decimal[:-1]:
+            return decimal
 
 
 # if 1/n has a repeating decimal this returns the length in digits of the
 # recurring cycle, otherwise returns 0
 def repeatDigits(n):
-    dec = decExpansion(n)
-    for i in range(len(dec) - 1):
-        if dec[i][0] == dec[-1][0] and dec[i][1] == dec[-1][1]:
-            return len(dec) - 1 - i
-    return 0
+    decimal = decimalExpansion(n)
+
+    # non repeating decimal
+    if decimal[-1][-1] == 0:
+        return 0
+    
+    # checks if position in decimal has same remainder as last position
+    for i in range(len(decimal) - 1):
+        if decimal[i] == decimal[-1]:
+            return len(decimal) - 1 - i
 
 
 # returns a string representation of decimal of 1/n
-def decStr(n):
-    decstr = '0.'
-    dec = decExpansion(n)
+def decimalString(n):
+    string = '0.'
+    decimal = decimalExpansion(n)
 
     # non repeating decimal
-    if dec[-1][-1] == 0:
-        for i in range(len(dec)):
-            decstr += str(dec[i][0])
+    if decimal[-1][-1] == 0:
+        for i in range(len(decimal)):
+            string += str(decimal[i][0])
 
     # repeating decimal       
-    else: 
-        for i in range(len(dec) - 1):
-            if dec[i][0] == dec[-1][0] and dec[i][1] == dec[-1][1]:
-                decstr += '('
-            decstr += str(dec[i][0])
-        decstr += ')'
+    else:
+
+        # last element of list is 1st repeated digit, no need to add this
+        # hence only iterating up to penultimate list element
+        for i in range(len(decimal) - 1):
+
+            # prepending parenthesis if this element is start of repeating cycle
+            if decimal[i] == decimal[-1]:
+                string += '('
+
+            string += str(decimal[i][0])
+        string += ')'
             
-    return decstr
+    return string
 
 
-h=0
-for i in range (1,1000,2):
-    j = repeatDigits(i)
-    if j>h:
-        h=j
-        longestN=i
+longestRepeat = 0
+for i in range (1,1000):
+    repeat = repeatDigits(i)
+    if repeat > longestRepeat:
+        longestRepeat = repeat
+        longestN = i
 
 print (f'The longest recurring decimal in a fraction of the form 1/n is in 1/{longestN}:')
-print (f'1/{longestN} = {decStr(longestN)}')
+print (f'1/{longestN} = {decimalString(longestN)}')
