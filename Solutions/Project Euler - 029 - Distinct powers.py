@@ -32,33 +32,17 @@ and 2 ≤ b ≤ 100?
 
 
 # ------------------------------------------------------------------------------
-# Pseudocode
-# ------------------------------------------------------------------------------
-"""
-general outline / plan of approach to problem
-explanation of insights in to problem may also be included here as necessary
-"""
-# ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
-# Extra Information
-# ------------------------------------------------------------------------------
-"""
-optional section depending on problem
-"""
-# ------------------------------------------------------------------------------
-
-
-# ------------------------------------------------------------------------------
 # Main Code
 # ------------------------------------------------------------------------------
 
-def powerSet(a, b): 
+# returns a set of all the possible values of a^b where 1 < a,b <= aLimit,bLimit 
+def powerSet(aLimit, bLimit): 
     powers = []
-    for i in range(2, a):
-        for j in range(2, b):
-            powers += [i**j]
+    for a in range(2, aLimit + 1):
+        for b in range(2, bLimit + 1):
+            powers.append(a**b)
+
+    # cast powers to a set before returning, so repeat values are removed
     return set(powers)
 
-print (len(powerSet(101, 101)))
+print (len(powerSet(100, 100)))
