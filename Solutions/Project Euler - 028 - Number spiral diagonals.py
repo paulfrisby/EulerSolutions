@@ -34,17 +34,19 @@ in the same way?
 # Pseudocode
 # ------------------------------------------------------------------------------
 """
-general outline / plan of approach to problem
-explanation of insights in to problem may also be included here as necessary
-"""
-# ------------------------------------------------------------------------------
+For an n by n spiral, we can see that:
+- top right value = n^2
+- top left value = n^2 - (n-1)
+- bottom left value = n^2 - 2(n-1)
+- bottom right value = n^2 - 3(n-1)
 
+So in total, when we go from an n-2 by n-2 spiral to an n by n spiral, we add
+4n^2 - 6n + 6 to the total
 
-# ------------------------------------------------------------------------------
-# Extra Information
-# ------------------------------------------------------------------------------
-"""
-optional section depending on problem
+Let total = 1 (for 1 by 1 spiral)
+for each odd value from 3 to 1001:
+    total = total + 4n^2 - 6n + 6
+print total
 """
 # ------------------------------------------------------------------------------
 
@@ -55,8 +57,11 @@ optional section depending on problem
 
 def spiralDiagSum(n):
     total = 1
-    for i in range(int((n-1)/2)):
-        total += 4 * ( ((2*i)+1)**2 ) + 10 * (2*(i+1))
+
+    # iterating through every odd number up to, and including, n
+    for i in range(3, n + 1, 2):
+        total += 4*(i**2) - 6*i + 6
+        
     return total
 
 print (spiralDiagSum(1001))
