@@ -69,17 +69,17 @@ from math import sqrt
 
 # returns nth triangular number
 def nthTriangular(n):
-        return int(n*(n+1)/2)
+    return int(n*(n+1)/2)
 
 
 # returns nth pentagonal number
 def nthPentagonal(n):
-        return int(n*(3*n-1)/2)
+    return int(n*(3*n-1)/2)
 
 
 # returns nth hexagonal number
 def nthHexagonal(n):
-        return int(n*(2*n-1))
+    return int(n*(2*n-1))
 
 
 # returns true if input number is triangular
